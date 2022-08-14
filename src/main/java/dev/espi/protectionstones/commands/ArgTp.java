@@ -191,8 +191,8 @@ public class ArgTp implements PSCommandArg {
                             removeUUIDTimer(uuid);
                         } else if (waitCounter.get(uuid) == r.getTypeOptions().tpWaitingSeconds * 4) { // * 4 since this loops 4 times a second
                             // if the timer has passed, teleport and cancel
+                            removeUUIDTimer(uuid);
                             PaperLib.teleportAsync(p, r.getHome()).thenAccept(result -> {
-                                removeUUIDTimer(uuid);
                                 if (result) {
                                     PSL.msg(pl, PSL.TPING.msg());
                                 } else {
